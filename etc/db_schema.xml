@@ -1,0 +1,18 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="request_price" resource="default" engine="innodb">
+        <column xsi:type="int" name="request_id" padding="11" unsigned="true" nullable="false" identity="true" comment="Request Id"/>
+        <column xsi:type="varchar" name="name" length="64" nullable="false" comment="Name"/>
+        <column xsi:type="varchar" name="email" length="96" nullable="false" comment="Email"/>
+        <column xsi:type="varchar" name="comment" length="255" nullable="false" comment="Comment"/>
+        <column xsi:type="varchar" name="product_sku" nullable="true" length="255" comment="Product SKU"/>
+        <column xsi:type="tinyint" name="status" default="0" unsigned="true" padding="2" comment="Status"/>
+        <column xsi:type="datetime" name="created_at" default="CURRENT_TIMESTAMP" nullable="false" comment="Creation Time "/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="request_id"/>
+        </constraint>
+        <index referenceId="CATALOG_PRODUCT_ENTITY_SKU" indexType="btree">
+            <column name="product_sku"/>
+        </index>
+    </table>
+</schema>

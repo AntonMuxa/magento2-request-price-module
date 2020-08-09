@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for=" MageMiha\RequestPrice\Api\Model\RequestPriceInterface" type="
+MageMiha\RequestPrice\Model\AmastyRepository"/>
+    <preference for=" MageMiha\RequestPrice\Api\Repository\RequestPriceRepositoryInterface" type="
+MageMiha\RequestPrice\Model\Amasty"/>
+    <preference for=" MageMiha\RequestPrice\Api\Data\AmastySearchResultInterface" type="
+Magento\Framework\Api\SearchResults"/>
+</config>
