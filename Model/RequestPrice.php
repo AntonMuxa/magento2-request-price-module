@@ -1,43 +1,51 @@
 <?php
 
-use MageMiha\RequestPrice\Api\Model\RequestPriceInterface;
+namespace MageMiha\RequestPrice\Model;
 
-class RequestPrice implements RequestPriceInterface
+use MageMiha\RequestPrice\Api\Data\RequestPriceInterface;
+use MageMiha\RequestPrice\Model\ResourceModel\RequestPrice as ResourceModel;
+use Magento\Framework\Model\AbstractModel;
+
+class RequestPrice extends AbstractModel implements RequestPriceInterface
 {
+    protected function _construct()
+    {
+        $this->_init(ResourceModel::class);
+    }
 
     public function getRequestId()
     {
-        return $this->_getData(self::REQUEST_ID);
+        return $this->getData(self::REQUEST_ID);
     }
 
     public function getName()
     {
-        return $this->_getData(self::NAME);
+        return $this->getData(self::NAME);
     }
 
     public function getEmail()
     {
-        return $this->_getData(self::EMAIL);
+        return $this->getData(self::EMAIL);
     }
 
     public function getComment()
     {
-        return $this->_getData(self::COMMENT);
+        return $this->getData(self::COMMENT);
     }
 
     public function getProductSku()
     {
-        return $this->_getData(self::PRODUCT_SKU);
+        return $this->getData(self::PRODUCT_SKU);
     }
 
     public function getStatus()
     {
-        return $this->_getData(self::STATUS);
+        return $this->getData(self::STATUS);
     }
 
     public function getCreatedAt()
     {
-        return $this->_getData(self::CREATE_AT);
+        return $this->getData(self::CREATE_AT);
     }
 
     public function setName($name)

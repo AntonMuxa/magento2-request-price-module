@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--<referenceBlock name="product.price.tier" remove="true"/>-->
+        <!--<referenceBlock name="product.price.final" remove="true"/>-->
+        <referenceContainer name="product.info.price">
+            <block class="MageMiha\RequestPrice\Block\RequestPrice\Form" name="magemiha.requestprice.form" template="MageMiha_RequestPrice::requestprice/form.phtml" before="-" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

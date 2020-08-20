@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add action="magemiha_requestprice/requestprice/index"
+             id="MageMiha_RequestPrice::magemiha_requestprice_requestprice"
+             module="MageMiha_RequestPrice"
+             parent="Magento_Customer::customer"
+             resource="Magento_Backend::content"
+             sortOrder="9999"
+             title="RequestPrice"/>
+    </menu>
+</config>

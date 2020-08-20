@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">magemiha_requestprice_requestprice_form.requestprice_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="MageMiha\RequestPrice\Block\Adminhtml\RequestPrice\Edit\BackButton" name="back"/>
+			<button class="MageMiha\RequestPrice\Block\Adminhtml\RequestPrice\Edit\DeleteButton" name="delete"/>
+			<button class="MageMiha\RequestPrice\Block\Adminhtml\RequestPrice\Edit\SaveButton" name="save"/>
+			<button class="MageMiha\RequestPrice\Block\Adminhtml\RequestPrice\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>magemiha_requestprice_requestprice_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>magemiha_requestprice_requestprice_form.requestprice_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="requestprice_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="MageMiha\RequestPrice\Model\DataProvider" name="requestprice_form_data_source">
+			<settings>
+				<requestFieldName>request_id</requestFieldName>
+				<primaryFieldName>request_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field formElement="input" name="name" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">RequestPrice</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">name</label>
+				<dataScope>name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="email" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">RequestPrice</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">email</label>
+				<dataScope>email</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="comment" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">RequestPrice</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">comment</label>
+				<dataScope>comment</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="product_sku" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">RequestPrice</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">product_sku</label>
+				<dataScope>product_sku</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="status" sortOrder="60">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">RequestPrice</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">status</label>
+				<dataScope>status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options>
+							<option name="0" xsi:type="array">
+								<item name="value" xsi:type="string">0</item>
+								<item name="label" xsi:type="string">New</item>
+							</option>
+							<option name="1" xsi:type="array">
+								<item name="value" xsi:type="string">1</item>
+								<item name="label" xsi:type="string">In Progress</item>
+							</option>
+							<option name="2" xsi:type="array">
+								<item name="value" xsi:type="string">2</item>
+								<item name="label" xsi:type="string">Closed</item>
+							</option>
+						</options>
+						<caption translate="true">-- Please Select --</caption>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+	</fieldset>
+</form>

@@ -1,0 +1,121 @@
+<?php
+/**
+ * @var $block \MageMiha\RequestPrice\Block\RequestPrice\Form
+ */
+?>
+<div class="req-price"><button id="request-price" class="action primary">Request Price</button></div>
+
+    <div class="block request-price-modal" id="request-price-modal" style="display:none;">
+        <div class="block-title form-heading">
+            <h5 class="block-request-price-heading" role="heading" aria-level="2"></h5>
+        </div>
+        <div class="block-content" aria-labelledby="block-request-price-heading">
+            <form class="form request-price"
+                  action=""
+                  id="request-price-form"
+                  method="post"
+                  data-hasrequired=""
+                  data-mage-init='{"validation":{}}'>
+                <fieldset class="fieldset">
+                    <div class="field firstname required">
+                        <label class="label" for="name"><span>Name</span></label>
+                        <div class="control">
+                            <input name="firstname" id="firstname" title="Name" value="" class="input-text" type="text" data-validate="{required:true}"/>
+                        </div>
+                    </div>
+                    <div class="field email required">
+                        <label class="label" for="email"><span>Email</span></label>
+                        <div class="control">
+                            <input name="email" id="email" title="Email" value="" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                        </div>
+                    </div>
+                    <div class="field comment">
+                        <label class="label" for="comment"><span>Comment</span></label>
+                        <div class="control">
+                            <textarea name="comment" id="comment" title="Comment" class="input-text" cols="5" rows="6" data-validate="{required:false}"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit" title="Submit" class="action submit primary contact-submit">
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="messages">
+                    <div class="message" style="display:none"><div style="background-color: #1979c3;border-radius: 3px;padding: 5px;margin: 3px 0;color: #fff;"></div></div>
+                </div>
+            </form>
+            <p class="request-price-required">* Required</p>
+        </div>
+    </div>
+
+    <script>
+        require(
+
+            [
+                'jquery',
+                'Magento_Ui/js/modal/modal'
+            ],
+            function (
+                $,
+                modal
+            ) {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    modalClass: 'request-price-modal',
+                    buttons: false
+                };
+
+                modal(options, $('#request-price-modal'));
+
+                var popup = '';
+                $("#request-price").on('click', function () {
+                    popup = $('#request-price-modal').modal("openModal");
+                });
+
+            }
+        );
+
+    </script>
+
+    <script>
+        require([
+            'jquery',
+            'mage/mage'
+        ], function ($) {
+            var dataForm = $('#request-price-form');
+            dataForm.mage('validation', {});
+            $('.contact-submit').on('click', function () {
+                if (dataForm.validation('isValid')) {
+                    $.ajax({
+                        url: '<?php echo $this->getUrl('requestprice'); ?>',
+                        data: dataForm.serialize() + "&product_sku=" + $('[itemprop=sku]').text(),
+                        showLoader: true,
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (response) {
+                            if (!response.errors) {
+                                $(' .request-price .messages .message div').text(response.message);
+                                $(' .request-price .messages .message').show();
+                                $('.request-price input, .request-price textarea').val('');
+                                setTimeout(function () {
+                                    $('.request-price .messages .message').hide();
+                                }, 2500);
+                                setTimeout(function () {
+                                    $('#request-price-modal').modal("closeModal");
+                                }, 3000);
+                            } else {
+                                $(' .request-price .messages .message div').text(response.message);
+                                $(' .request-price .messages .message').show();
+                            }
+                        }
+                    });
+                    return false;
+                }
+            })
+        });
+    </script>

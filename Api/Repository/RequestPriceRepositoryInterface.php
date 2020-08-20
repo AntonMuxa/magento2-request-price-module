@@ -2,12 +2,12 @@
 
 namespace MageMiha\RequestPrice\Api\Repository;
 
-use MageMiha\RequestPrice\Api\Model\RequestPriceInterface;
+use MageMiha\RequestPrice\Api\Data\RequestPriceInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use MageMiha\RequestPrice\Api\Model\RequestPriceSearchResultInterface;
+use MageMiha\RequestPrice\Api\Data\RequestPriceSearchResultInterface;
 
 interface RequestPriceRepositoryInterface
 {
@@ -22,7 +22,7 @@ interface RequestPriceRepositoryInterface
 
     /**
      * @param SearchCriteriaInterface $searchCriteria
-     * @return \MageMiha\RequestPrice\Api\Model\RequestPriceSearchResultInterface
+     * @return \MageMiha\RequestPrice\Api\Data\RequestPriceSearchResultInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria) : RequestPriceSearchResultInterface;
 

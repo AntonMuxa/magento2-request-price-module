@@ -1,6 +1,6 @@
 <?php
 
-namespace MageMiha\RequestPrice\Api\Model;
+namespace MageMiha\RequestPrice\Api\Data;
 
 
 interface RequestPriceInterface

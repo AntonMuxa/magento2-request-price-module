@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="MageMiha_RequestPrice::RequestPrice" sortOrder="10" title="RequestPrice">
+                    <resource id="MageMiha_RequestPrice::RequestPrice_save" sortOrder="10" title="Save RequestPrice"/>
+                    <resource id="MageMiha_RequestPrice::RequestPrice_delete" sortOrder="20" title="Delete RequestPrice"/>
+                    <resource id="MageMiha_RequestPrice::RequestPrice_update" sortOrder="30" title="Update RequestPrice"/>
+                    <resource id="MageMiha_RequestPrice::RequestPrice_view" sortOrder="40" title="View RequestPrice"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
